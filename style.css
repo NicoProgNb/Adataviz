@@ -1,0 +1,56 @@
+/* Variables */
+:root {
+    --back:#a2b7e96a;
+
+}
+
+/* RAZ */
+* {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============= */
+/* Mise en page  */
+/* ============= */
+body {
+    margin: 1rem;
+    background: var(--back);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+}
+
+#searchBar {
+    text-align: center;
+}
+
+#searchBar input {
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+#searchBar button {
+    padding: 0 0.5rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+}
+
+#parentCartes {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 1rem;
+    padding: 1rem;
+    gap: 2rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+}
+
+footer {
+    margin-right: 1rem;
+    text-align: end;
+}
