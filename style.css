@@ -40,13 +40,13 @@ header {
 }
 
 #parentCartes {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
     margin: 2rem 1rem;
     padding: 1rem;
-    gap: 2rem;
-    border: 1px solid black;
-    border-radius: 1rem;
+    gap: 2rem; 
+    border: 5px solid var(--back);
+    border-radius: 3rem;
 }
 
 .carte {
@@ -54,7 +54,10 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30vw;
+    padding: 1rem;
+    gap: 1rem;
+    background: var(--back);
+    border-radius: 3rem;
 }
 
 #imgCadre {
@@ -83,10 +86,6 @@ article h2 {
 
 }
 
-#ville {
-
-}
-
 #date {
 
 }
@@ -97,3 +96,19 @@ footer {
     text-align: end;
 }
 
+/* Responsive */
+/* 768px */
+
+@media (width > 768px) {
+
+#parentCartes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    margin: 2rem 1rem;
+    padding: 1rem;
+    gap: 2rem; 
+    border: 5px solid var(--back);
+    border-radius: 3rem;
+}
+
+}
