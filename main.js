@@ -61,9 +61,8 @@ const afficherCartes = (elements) => {
             <div id="imgCadre">
                 <img src="${evt.media_url}" alt="Photo de ${evt.nom}">
             </div>
-            <p id="lieu"><strong>Lieu :</strong> ${evt.lieu}</p>
-            <p id ="ville"><strong>Ville :</strong> (${evt.ville})</p>
-            <p id="date"><strong>Date :</strong> ${evt.date}</p>
+            <p id="lieu">${evt.lieu} - ${evt.ville}</p>
+            <p id="date">Rdv le ${evt.date}</p>
         </article>
     `
     parentCartes.innerHTML += carteHTML
