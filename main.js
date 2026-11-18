@@ -39,6 +39,8 @@ const dataAsync = async() => {
         const promiseData = await fetch(urlApi)
         const data = await promiseData.json()
         console.log(data)
+        afficherCartes(data.results)
+
     } catch(error) {
         console.log("ERROR :", error)
     } finally {
