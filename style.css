@@ -1,6 +1,7 @@
 /* Variables */
 :root {
     --back:#a2b7e96a;
+    --back2:#1d3d8fc5;
 }
 
 /* RAZ */
@@ -21,7 +22,18 @@ body {
 header {
     text-align: center;
     margin-bottom: 3rem;
-    font-size: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #2812b5;
+    letter-spacing: 0.02rem;
+    text-shadow: 
+    0 0 10px rgba(56, 189, 248, 0.8),
+    0 0 25px rgba(56, 189, 248, 0.5),
+    0 0 50px rgba(139, 92, 246, 0.4);
+
 }
 
 #searchBar {
@@ -82,14 +94,22 @@ article h2 {
     font-size: 1rem;
 }
 
-#lieu {
-
+#btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem;
 }
 
-#date {
-
+#btn button{
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    width: 10rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    background: var(--back2);
 }
-
 
 footer {
     margin-right: 1rem;
