@@ -1,21 +1,17 @@
-// import { * } from "./utils.js" import utils from "./utils.js" 
-// Test d'importation
-// console.log(utils.addition(1, 4))
-//====================
+import { evenements, dataAsync } from "./utils.js";
 
 // ======================
 // Constantes / Variables
 // ======================
 
 // Lien url
-const urlApi = "https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_agenda-evenements-nantes-metropole_v2/records?select=nom%2C%20description_evt%2C%20lieu%2C%20ville%2C%20gratuit%2C%20media_url%2C%20date&where=date%20%3E%3D%20now()&limit=20"
+const urlApi = "https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_agenda-evenements-nantes-metropole_v2/records?select=nom%2C%20description_evt%2C%20lieu%2C%20ville%2C%20gratuit%2C%20media_url%2C%20date&where=date%20%3E%3D%20now()&limit=50"
 
 // Pages
 const parentCartes = document.getElementById('parentCartes')
 const elementsParPage = 4
 let pageActuelle = 1
 let totalPages = 0
-let evenements = []
 
 // Boutons
 const precedent = document.getElementById('precedent')
@@ -24,22 +20,22 @@ const suivant = document.getElementById('suivant')
 // ===========
 // RECUP DATA
 // ===========
-const dataAsync = async () => {
-    try {
-        const promiseData = await fetch(urlApi)
-        const data = await promiseData.json()
+// const dataAsync = async () => {
+//     try {
+//         const promiseData = await fetch(urlApi)
+//         const data = await promiseData.json()
 
-        evenements = data.results || []
-        totalPages = Math.ceil(evenements.length / elementsParPage)
+//         evenements = data.results
+//         totalPages = Math.ceil(evenements.length / elementsParPage)
 
-        console.log(data)
-        afficherPage(pageActuelle)
-    } catch (error) {
-        console.error('ERROR :', error)
-    } finally {
-        console.log('Fin de la lecture de data')
-    }
-}
+//         console.log(data)
+//         afficherPage(pageActuelle)
+//     } catch (error) {
+//         console.error('ERROR :', error)
+//     } finally {
+//         console.log('Fin de la lecture de data')
+//     }
+// }
 
 // ===============
 // Afficher Cartes
@@ -91,11 +87,17 @@ const afficherPage = (page) => {
         suivant.disabled = true
     } else {
         suivant.style.visibility = 'visible'
-        precedent.disabled = false    
+        suivant.disabled = false    
     }
 }
 
-dataAsync()
+const init = async () => {
+    await dataAsync(urlApi)
+    totalPages = Math.ceil(evenements.length / elementsParPage)
+    afficherPage(pageActuelle)
+}
+
+init()
 
 // ======================
 // Écouteurs d'évènements
