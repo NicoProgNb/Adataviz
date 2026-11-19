@@ -46,11 +46,19 @@ const afficherCartes = (elements) => {
     elements.forEach((evt) => {
     const carteHTML = `
         <article class="carte">
+            <button class="btn-fermer" aria-label="Fermer">✕</button>
             <h2>${evt.nom}</h2>
-            <div id="imgCadre">
+            <div class="imgCadre">
                 <img src="${evt.media_url}" alt="Photo de ${evt.nom}">
             </div>
-            <p id="lieu">${evt.lieu} - ${evt.ville}</p>
+
+            <!-- caché hors plein-écran -->
+            <div class="cache">
+                <p class="description">${evt.description_evt}</p>
+            </div>
+            <!-- caché hors plein-écran -->
+
+            <p id="lieu">Lieu : ${evt.lieu} - ${evt.ville}</p>
             <p id="date">Rdv le ${evt.date}</p>
         </article>
     `
@@ -102,6 +110,25 @@ init()
 // ======================
 // Écouteurs d'évènements
 // ======================
+
+// Aggrandir une carte
+parentCartes.addEventListener("click", (e) => {
+  const carteCliquee = e.target.closest(".carte");
+  if (!carteCliquee) return;
+
+  // Si on clique sur le bouton "fermer"
+  if (e.target.classList.contains("btn-fermer")) {
+    carteCliquee.classList.remove("plein-ecran");
+    document.body.classList.remove("no-scroll");
+    return;
+  }
+
+  // Sinon, on ouvre la carte en plein écran
+  carteCliquee.classList.add("plein-ecran");
+  document.body.classList.add("no-scroll");
+});
+
+// Précedent & Suivant
 precedent.addEventListener('click', () => {
     if (pageActuelle > 1) {
         pageActuelle--
